@@ -1,0 +1,9 @@
+{
+  "x dimension": 50,
+  "y dimension": 50,
+  "p1": 0.5,
+  "p2": 0.6,
+  "p3": 0.5,
+  "create animation": "True",
+  "fraction of immune agents": 0.2
+}
