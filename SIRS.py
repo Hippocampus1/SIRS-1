@@ -31,22 +31,21 @@ class SIRS(object):
         agent_arr = []
         # how many agents are immune
         agent_nr = int(self.immune_frac*self.sweep)
-        print(agent_nr)
-        for i in range(agent_nr):
+        #print(agent_nr)
+        # generating the first immune agent (no threat of overlap)
+        i = 0
+        while i < agent_nr:
+            #print(i, agent_arr)
             agent = (np.random.randint(0, self.x_dim), np.random.randint(0, self.y_dim))
-            self.system[agent[1], agent[0]] = 2
-            agent_arr.append(agent)
             # make sure no sites were randomly generated more than once
-            check = True
-            while check:
-                agent = (np.random.randint(0, self.x_dim), np.random.randint(0, self.y_dim))
-                for n in agent_arr:
-                    if n == agent:
-                        break
-                    else:
-                        check = False
+            in_arr = False
+            for a in agent_arr:
+                if a == agent:
+                    in_arr = True
+            if in_arr: continue
             self.system[agent[1], agent[0]] = 2
             agent_arr.append(agent)
+            i += 1
         #print(agent_arr)
         return agent_arr
 
